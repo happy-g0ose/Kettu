@@ -1,0 +1,35 @@
+name: Build Turbo bundle
+
+on:
+  push:
+    branches: [github]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: github
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build release bundle
+        run: npm run build -- --release-branch main --build-minify
+
+      - name: Publish bundle
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f dist/kettu.js dist/kettu.min.js
+          git commit -m "build: turbo release bundle" || echo "No bundle changes"
+          git push origin HEAD:github
