@@ -3,6 +3,7 @@ declare global {
         var SkiaApi: typeof import("@shopify/react-native-skia").Skia;
 
         // ReactNative/Hermes globals
+        var __DEV__: boolean;
         var globalEvalWithSourceUrl: (script: string, sourceURL: string) => any;
         var nativePerformanceNow: typeof performance.now;
         var nativeModuleProxy: Record<string, any>;
