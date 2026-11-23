@@ -11,6 +11,7 @@ export const getCorePlugins = (): Record<string, CorePlugin> => ({
     "bunny.badges": require("./badges"),
     "bunny.notrack": require("./notrack"),
     "bunny.messagefix": require("./messagefix"),
+    "bunny.turbo": require("./turbo"),
 });
 
 /**
