@@ -1,5 +1,35 @@
-# Kettu
-A mod for Discord on Mobile
+# Kettu Turbo
+A performance-focused fork of [Kettu](https://github.com/C0C0B01/Kettu) for Discord on Mobile: faster cold start, built-in Turbo tweaks and two lightweight themes.
+
+> Using a third-party client/mod may violate Discord's Terms of Service. Use at your own risk.
+
+### What is different
+- `__DEV__` is compiled out, bundle is minified (`dist/kettu.min.js`).
+- Non-critical startup work (i18n polling, fonts, external plugins, React DevTools) runs after the first frame instead of blocking it.
+- New pre-enabled core plugin **bunny.turbo**: list virtualization defaults, capped blur cost, Android image resize method, GC on memory pressure.
+- Two Vendetta-format themes in `themes/`.
+
+### Install the bundle (no PC needed after install)
+1. Install a Kettu loader (see [Installing](#installing)).
+2. In Discord: **Settings → General → Developer Settings → Load from custom url**.
+3. Set **Kettu URL** to:
+   ```
+   https://raw.githubusercontent.com/happy-g0ose/Kettu/github/dist/kettu.min.js
+   ```
+4. Restart Discord.
+
+### Themes
+Install as a Vendetta theme URL, then select it in Kettu → Themes:
+- `https://raw.githubusercontent.com/happy-g0ose/Kettu/github/themes/turbo-amoled.json`
+- `https://raw.githubusercontent.com/happy-g0ose/Kettu/github/themes/turbo-slate.json`
+
+### Build locally
+Node.js is enough (bun is optional):
+```
+npm install
+npm run build -- --release-branch main --build-minify
+```
+`--release-branch main` is what disables `__DEV__` — keep it for the production bundle.
 
 ### [![Discord](https://img.shields.io/discord/1368145952266911755?logo=discord&logoColor=%23ffffffff&color=%231D88CF&link=https%3A%2F%2Fdiscord.gg%2F6cN7wKa8gp)](https://discord.gg/6cN7wKa8gp) [![Static Badge](https://img.shields.io/badge/kofi-cocobo1-%23FF6433?style=flat&logo=ko-fi&labelColor=%23ffffff)](https://www.ko-fi.com/cocobo1) ![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/cocobo1/Kettu?gitea_url=https%3A%2F%2Fwww.codeberg.org&logo=codeberg&logoColor=%23ffffffff)
 
